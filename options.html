@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tab Icon Switcher - Options</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #f5f5f5;
+    }
+    
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      transition: background-color 0.2s;
+    }
+    
+    .option:hover {
+      background-color: #f9f9f9;
+    }
+    
+    .option input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    
+    .option-label {
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+      flex-grow: 1;
+    }
+    
+    .option-description {
+      font-size: 13px;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    .icon-preview {
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+      border-radius: 4px;
+      background-color: #f0f0f0;
+      padding: 4px;
+    }
+    
+    .status {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .status.show {
+      opacity: 1;
+    }
+    
+    .status.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.2s;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    button:active {
+      background-color: #3d8b40;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tab Icon Switcher Options</h1>
+    <p class="subtitle">Choose which tab icons you want to enable</p>
+    
+    <div class="options-grid">
+    <div class="option">
+      <input type="checkbox" id="enableBug" checked>
+      <img src="icons/bug.png" alt="Bug icon" class="icon-preview">
+      <div>
+        <label for="enableBug" class="option-label">
+          <strong>Bug Icons</strong>
+        </label>
+        <div class="option-description">
+          Show bug icon for tabs starting with "Bug"
+        </div>
+      </div>
+    </div>
+    
+    <div class="option">
+      <input type="checkbox" id="enablePR" checked>
+      <img src="icons/pr.png" alt="Pull Request icon" class="icon-preview">
+      <div>
+        <label for="enablePR" class="option-label">
+          <strong>Pull Request Icons</strong>
+        </label>
+        <div class="option-description">
+          Show PR icon for tabs starting with "Pull request"
+        </div>
+      </div>
+    </div>
+    
+    <div class="option">
+      <input type="checkbox" id="enableStory" checked>
+      <img src="icons/story.png" alt="User Story icon" class="icon-preview">
+      <div>
+        <label for="enableStory" class="option-label">
+          <strong>User Story Icons</strong>
+        </label>
+        <div class="option-description">
+          Show story icon for tabs starting with "User Story"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enablePipeline" checked>
+      <img src="icons/release.png" alt="Pipeline icon" class="icon-preview">
+      <div>
+        <label for="enablePipeline" class="option-label">
+          <strong>Pipeline Icons</strong>
+        </label>
+        <div class="option-description">
+          Show pipeline icon for tabs starting with "Pipeline"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableFeature" checked>
+      <img src="icons/feature.png" alt="Feature icon" class="icon-preview">
+      <div>
+        <label for="enableFeature" class="option-label">
+          <strong>Feature Icons</strong>
+        </label>
+        <div class="option-description">
+          Show feature icon for tabs starting with "Feature"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableEpic" checked>
+      <img src="icons/epic.png" alt="Epic icon" class="icon-preview">
+      <div>
+        <label for="enableEpic" class="option-label">
+          <strong>Epic Icons</strong>
+        </label>
+        <div class="option-description">
+          Show epic icon for tabs starting with "Epic"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableReadiness" checked>
+      <img src="icons/readiness.png" alt="Release Readiness icon" class="icon-preview">
+      <div>
+        <label for="enableReadiness" class="option-label">
+          <strong>Release Readiness Icons</strong>
+        </label>
+        <div class="option-description">
+          Show readiness icon for tabs starting with "Release Readiness"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableSearch" checked>
+      <img src="icons/mag.png" alt="Search icon" class="icon-preview">
+      <div>
+        <label for="enableSearch" class="option-label">
+          <strong>Search Icons</strong>
+        </label>
+        <div class="option-description">
+          Show search icon for tabs ending with "- Search"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableBoard" checked>
+      <img src="icons/board.png" alt="Board icon" class="icon-preview">
+      <div>
+        <label for="enableBoard" class="option-label">
+          <strong>Board Icons</strong>
+        </label>
+        <div class="option-description">
+          Show board icon for tabs ending with "- Boards"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableWiki" checked>
+      <img src="icons/wiki.png" alt="Wiki icon" class="icon-preview">
+      <div>
+        <label for="enableWiki" class="option-label">
+          <strong>Wiki Icons</strong>
+        </label>
+        <div class="option-description">
+          Show wiki icon for wiki pages (URLs containing "_wiki/wikis")
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableRepos" checked>
+      <img src="icons/code.png" alt="Repos icon" class="icon-preview">
+      <div>
+        <label for="enableRepos" class="option-label">
+          <strong>Repos Icons</strong>
+        </label>
+        <div class="option-description">
+          Show code icon for tabs ending with "- Repos"
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableRelease" checked>
+      <img src="icons/release.png" alt="Release icon" class="icon-preview">
+      <div>
+        <label for="enableRelease" class="option-label">
+          <strong>Release Icons</strong>
+        </label>
+        <div class="option-description">
+          Show release icon for release pages (URLs containing "/_release")
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableDashboard" checked>
+      <img src="icons/dashboard.png" alt="Dashboard icon" class="icon-preview">
+      <div>
+        <label for="enableDashboard" class="option-label">
+          <strong>Dashboard Icons</strong>
+        </label>
+        <div class="option-description">
+          Show dashboard icon for dashboard pages (URLs containing "/_dashboards")
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableArtifacts" checked>
+      <img src="icons/vase.png" alt="Artifacts icon" class="icon-preview">
+      <div>
+        <label for="enableArtifacts" class="option-label">
+          <strong>Artifacts Icons</strong>
+        </label>
+        <div class="option-description">
+          Show artifacts icon for artifact pages (URLs containing "/_artifacts")
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableQueries" checked>
+      <img src="icons/query.png" alt="Queries icon" class="icon-preview">
+      <div>
+        <label for="enableQueries" class="option-label">
+          <strong>Queries Icons</strong>
+        </label>
+        <div class="option-description">
+          Show query icon for query pages (URLs containing "/_queries")
+        </div>
+      </div>
+    </div>
+
+    <div class="option">
+      <input type="checkbox" id="enableSettings" checked>
+      <img src="icons/settings.png" alt="Settings icon" class="icon-preview">
+      <div>
+        <label for="enableSettings" class="option-label">
+          <strong>Settings Icons</strong>
+        </label>
+        <div class="option-description">
+          Show settings icon for settings pages (URLs containing "/_settings")
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <button id="save">Save Settings</button>
+    
+    <div id="status" class="status"></div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
+

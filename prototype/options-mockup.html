@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tab Icon Switcher - Options Mockup</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #f5f5f5;
+    }
+    
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    
+    .icon-category {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+    
+    .category-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    
+    .category-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      flex-grow: 1;
+    }
+    
+    .category-description {
+      font-size: 13px;
+      color: #666;
+      margin-top: 3px;
+    }
+    
+    .enable-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .enable-toggle input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    
+    .icon-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    
+    .icon-option {
+      position: relative;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background-color: white;
+      text-align: center;
+    }
+    
+    .icon-option:hover {
+      border-color: #0078d4;
+      box-shadow: 0 2px 8px rgba(0, 120, 212, 0.15);
+    }
+    
+    .icon-option input[type="radio"] {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    
+    .icon-option.selected {
+      border-color: #0078d4;
+      background-color: #f0f8ff;
+      box-shadow: 0 2px 8px rgba(0, 120, 212, 0.2);
+    }
+    
+    .icon-preview-large {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .icon-preview-large img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    
+    .icon-style-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    
+    .icon-style-description {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.3;
+    }
+    
+    .disabled-overlay {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    
+    button {
+      background-color: #0078d4;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.2s;
+    }
+    
+    button:hover {
+      background-color: #006cbd;
+    }
+    
+    button:active {
+      background-color: #005a9e;
+    }
+    
+    .status {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .status.show {
+      opacity: 1;
+    }
+    
+    .status.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    /* Mock icon placeholders - different styles */
+    .icon-mockup {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto;
+    }
+
+    .style-default { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .style-flat { background: #3498db; }
+    .style-minimal { background: #ecf0f1; border: 2px solid #34495e; }
+    .style-gradient { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    .style-dark { background: #2c3e50; }
+    .style-colorful { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tab Icon Switcher - Icon Style Selector</h1>
+    <p class="subtitle">Choose your preferred icon style for each category</p>
+    
+    <!-- Bug Icons -->
+    <div class="icon-category">
+      <div class="category-header">
+        <div>
+          <div class="category-title">🐛 Bug Icons</div>
+          <div class="category-description">For tabs starting with "Bug"</div>
+        </div>
+        <div class="enable-toggle">
+          <input type="checkbox" id="enableBug" checked onchange="toggleCategory('bug', this.checked)">
+          <label for="enableBug">Enable</label>
+        </div>
+      </div>
+      <div id="bug-options" class="icon-options">
+        <label class="icon-option selected">
+          <input type="radio" name="bugStyle" value="default" checked>
+          <div class="icon-preview-large">
+            <img src="icons/bug.png" alt="Default bug icon">
+          </div>
+          <div class="icon-style-name">Default</div>
+          <div class="icon-style-description">Current icon</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="bugStyle" value="flat">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-flat">🐞</div>
+          </div>
+          <div class="icon-style-name">Flat</div>
+          <div class="icon-style-description">Simple design</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="bugStyle" value="minimal">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-minimal">🐛</div>
+          </div>
+          <div class="icon-style-name">Minimal</div>
+          <div class="icon-style-description">Clean outline</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="bugStyle" value="gradient">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-gradient">🪲</div>
+          </div>
+          <div class="icon-style-name">Gradient</div>
+          <div class="icon-style-description">Colorful style</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Pull Request Icons -->
+    <div class="icon-category">
+      <div class="category-header">
+        <div>
+          <div class="category-title">🔀 Pull Request Icons</div>
+          <div class="category-description">For tabs starting with "Pull request"</div>
+        </div>
+        <div class="enable-toggle">
+          <input type="checkbox" id="enablePR" checked onchange="toggleCategory('pr', this.checked)">
+          <label for="enablePR">Enable</label>
+        </div>
+      </div>
+      <div id="pr-options" class="icon-options">
+        <label class="icon-option selected">
+          <input type="radio" name="prStyle" value="default" checked>
+          <div class="icon-preview-large">
+            <img src="icons/pr.png" alt="Default PR icon">
+          </div>
+          <div class="icon-style-name">Default</div>
+          <div class="icon-style-description">Current icon</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="prStyle" value="github">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-dark">↪️</div>
+          </div>
+          <div class="icon-style-name">GitHub Style</div>
+          <div class="icon-style-description">GitHub look</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="prStyle" value="modern">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-colorful">⤴️</div>
+          </div>
+          <div class="icon-style-name">Modern</div>
+          <div class="icon-style-description">Sleek design</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="prStyle" value="classic">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-default">🔄</div>
+          </div>
+          <div class="icon-style-name">Classic</div>
+          <div class="icon-style-description">Traditional</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- User Story Icons -->
+    <div class="icon-category">
+      <div class="category-header">
+        <div>
+          <div class="category-title">📖 User Story Icons</div>
+          <div class="category-description">For tabs starting with "User Story"</div>
+        </div>
+        <div class="enable-toggle">
+          <input type="checkbox" id="enableStory" checked onchange="toggleCategory('story', this.checked)">
+          <label for="enableStory">Enable</label>
+        </div>
+      </div>
+      <div id="story-options" class="icon-options">
+        <label class="icon-option selected">
+          <input type="radio" name="storyStyle" value="default" checked>
+          <div class="icon-preview-large">
+            <img src="icons/story.png" alt="Default story icon">
+          </div>
+          <div class="icon-style-name">Default</div>
+          <div class="icon-style-description">Current icon</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="storyStyle" value="book">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-flat">📚</div>
+          </div>
+          <div class="icon-style-name">Book</div>
+          <div class="icon-style-description">Book style</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="storyStyle" value="document">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-minimal">📄</div>
+          </div>
+          <div class="icon-style-name">Document</div>
+          <div class="icon-style-description">Document style</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="storyStyle" value="card">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-gradient">🗂️</div>
+          </div>
+          <div class="icon-style-name">Card</div>
+          <div class="icon-style-description">Card design</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Pipeline Icons -->
+    <div class="icon-category">
+      <div class="category-header">
+        <div>
+          <div class="category-title">⚙️ Pipeline Icons</div>
+          <div class="category-description">For tabs starting with "Pipeline"</div>
+        </div>
+        <div class="enable-toggle">
+          <input type="checkbox" id="enablePipeline" checked onchange="toggleCategory('pipeline', this.checked)">
+          <label for="enablePipeline">Enable</label>
+        </div>
+      </div>
+      <div id="pipeline-options" class="icon-options">
+        <label class="icon-option selected">
+          <input type="radio" name="pipelineStyle" value="default" checked>
+          <div class="icon-preview-large">
+            <img src="icons/release.png" alt="Default pipeline icon">
+          </div>
+          <div class="icon-style-name">Default</div>
+          <div class="icon-style-description">Current icon</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="pipelineStyle" value="gear">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-dark">⚙️</div>
+          </div>
+          <div class="icon-style-name">Gear</div>
+          <div class="icon-style-description">Mechanical</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="pipelineStyle" value="flow">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-colorful">🔀</div>
+          </div>
+          <div class="icon-style-name">Flow</div>
+          <div class="icon-style-description">Process flow</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="pipelineStyle" value="rocket">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-gradient">🚀</div>
+          </div>
+          <div class="icon-style-name">Rocket</div>
+          <div class="icon-style-description">Deployment</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Feature Icons -->
+    <div class="icon-category">
+      <div class="category-header">
+        <div>
+          <div class="category-title">✨ Feature Icons</div>
+          <div class="category-description">For tabs starting with "Feature"</div>
+        </div>
+        <div class="enable-toggle">
+          <input type="checkbox" id="enableFeature" checked onchange="toggleCategory('feature', this.checked)">
+          <label for="enableFeature">Enable</label>
+        </div>
+      </div>
+      <div id="feature-options" class="icon-options">
+        <label class="icon-option selected">
+          <input type="radio" name="featureStyle" value="default" checked>
+          <div class="icon-preview-large">
+            <img src="icons/feature.png" alt="Default feature icon">
+          </div>
+          <div class="icon-style-name">Default</div>
+          <div class="icon-style-description">Current icon</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="featureStyle" value="star">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-gradient">⭐</div>
+          </div>
+          <div class="icon-style-name">Star</div>
+          <div class="icon-style-description">Star design</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="featureStyle" value="sparkle">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-colorful">✨</div>
+          </div>
+          <div class="icon-style-name">Sparkle</div>
+          <div class="icon-style-description">Bright style</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="featureStyle" value="flag">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-flat">🚩</div>
+          </div>
+          <div class="icon-style-name">Flag</div>
+          <div class="icon-style-description">Flag marker</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Board Icons -->
+    <div class="icon-category">
+      <div class="category-header">
+        <div>
+          <div class="category-title">📊 Board Icons</div>
+          <div class="category-description">For tabs ending with "- Boards"</div>
+        </div>
+        <div class="enable-toggle">
+          <input type="checkbox" id="enableBoard" checked onchange="toggleCategory('board', this.checked)">
+          <label for="enableBoard">Enable</label>
+        </div>
+      </div>
+      <div id="board-options" class="icon-options">
+        <label class="icon-option selected">
+          <input type="radio" name="boardStyle" value="default" checked>
+          <div class="icon-preview-large">
+            <img src="icons/board.png" alt="Default board icon">
+          </div>
+          <div class="icon-style-name">Default</div>
+          <div class="icon-style-description">Current icon</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="boardStyle" value="kanban">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-minimal">📋</div>
+          </div>
+          <div class="icon-style-name">Kanban</div>
+          <div class="icon-style-description">Kanban board</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="boardStyle" value="chart">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-flat">📊</div>
+          </div>
+          <div class="icon-style-name">Chart</div>
+          <div class="icon-style-description">Analytics view</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="boardStyle" value="grid">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-dark">▦</div>
+          </div>
+          <div class="icon-style-name">Grid</div>
+          <div class="icon-style-description">Grid layout</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Wiki Icons -->
+    <div class="icon-category">
+      <div class="category-header">
+        <div>
+          <div class="category-title">📚 Wiki Icons</div>
+          <div class="category-description">For wiki pages (URLs containing "_wiki/wikis")</div>
+        </div>
+        <div class="enable-toggle">
+          <input type="checkbox" id="enableWiki" checked onchange="toggleCategory('wiki', this.checked)">
+          <label for="enableWiki">Enable</label>
+        </div>
+      </div>
+      <div id="wiki-options" class="icon-options">
+        <label class="icon-option selected">
+          <input type="radio" name="wikiStyle" value="default" checked>
+          <div class="icon-preview-large">
+            <img src="icons/wiki.png" alt="Default wiki icon">
+          </div>
+          <div class="icon-style-name">Default</div>
+          <div class="icon-style-description">Current icon</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="wikiStyle" value="book">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-flat">📖</div>
+          </div>
+          <div class="icon-style-name">Book</div>
+          <div class="icon-style-description">Open book</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="wikiStyle" value="library">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-gradient">🏛️</div>
+          </div>
+          <div class="icon-style-name">Library</div>
+          <div class="icon-style-description">Knowledge base</div>
+        </label>
+        <label class="icon-option">
+          <input type="radio" name="wikiStyle" value="scroll">
+          <div class="icon-preview-large">
+            <div class="icon-mockup style-minimal">📜</div>
+          </div>
+          <div class="icon-style-name">Scroll</div>
+          <div class="icon-style-description">Ancient scroll</div>
+        </label>
+      </div>
+    </div>
+    
+    <button id="save" onclick="saveSettings()">Save Settings</button>
+    
+    <div id="status" class="status"></div>
+  </div>
+  
+  <script>
+    // Handle radio button selection visual feedback
+    document.querySelectorAll('.icon-option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Remove selected class from siblings
+        const container = this.closest('.icon-options');
+        container.querySelectorAll('.icon-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        // Add selected class to clicked option
+        this.classList.add('selected');
+        // Check the radio button
+        this.querySelector('input[type="radio"]').checked = true;
+      });
+    });
+
+    // Toggle category enable/disable
+    function toggleCategory(category, enabled) {
+      const optionsDiv = document.getElementById(`${category}-options`);
+      if (enabled) {
+        optionsDiv.classList.remove('disabled-overlay');
+      } else {
+        optionsDiv.classList.add('disabled-overlay');
+      }
+    }
+
+    // Save settings (mockup - would actually save to chrome.storage)
+    function saveSettings() {
+      const status = document.getElementById('status');
+      status.textContent = '✓ Settings saved successfully! (This is a mockup)';
+      status.className = 'status success show';
+      
+      // Hide message after 3 seconds
+      setTimeout(() => {
+        status.className = 'status success';
+      }, 3000);
+
+      // Log the selected options (for demonstration)
+      console.log('Selected icon styles:');
+      document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+        console.log(`${radio.name}: ${radio.value}`);
+      });
+    }
+  </script>
+</body>
+</html>
+
