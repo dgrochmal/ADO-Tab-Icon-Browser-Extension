@@ -2,6 +2,13 @@
 
 All notable changes to the ADO Tab Icons extension will be documented in this file.
 
+## [1.5.2] - 2026-01-12
+
+### Added
+- Support for Decision icon detection (tabs starting with "Decision")
+- New icon: gavel.png for decision pages
+- Options page checkbox for Decision icons
+
 ## [1.4.0] - 2025-10-16
 
 ### Added

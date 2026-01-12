@@ -17,6 +17,7 @@ const DEFAULT_SETTINGS = {
   enableArtifacts: true,
   enableQueries: true,
   enableSettings: true,
+  enableDecision: true,
 };
 
 // Function to get the appropriate icon based on title and URL
@@ -72,6 +73,8 @@ async function getIconForTitle(title) {
       return chrome.runtime.getURL('icons/epic.png');
     } else if (title.startsWith('Release Readiness') && settings.enableReadiness) {
       return chrome.runtime.getURL('icons/readiness.png');
+    } else if (title.startsWith('Decision') && settings.enableDecision) {
+      return chrome.runtime.getURL('icons/gavel.png');
     } else if (title.endsWith('- Search') && settings.enableSearch) {
       return chrome.runtime.getURL('icons/mag.png');
     } else if (title.endsWith('- Boards') && settings.enableBoard) {
