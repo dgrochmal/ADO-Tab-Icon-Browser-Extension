@@ -8,6 +8,7 @@ This Chrome extension automatically changes the browser tab icon (favicon) for A
 - **Feature** → Shows feature icon
 - **Epic** → Shows epic icon
 - **Release Readiness** → Shows readiness icon
+- **Decision** → Shows gavel icon
 - **Search** → Shows magnifying glass icon
 - **Boards** → Shows board icon
 - **Wikis** → Shows wiki/documentation icon
@@ -52,6 +53,7 @@ Examples of titles/URLs that will trigger icons:
 - **Feature icon**: "Feature #123: New Dashboard", "Feature Planning"
 - **Epic icon**: "Epic #456: Q4 Improvements", "Epic Details"
 - **Readiness icon**: "Release Readiness - Sprint 42"
+- **Decision icon**: "Decision: Architecture Review", "Decision Log"
 - **Search icon**: "Work Items - Search", "Code - Search"
 - **Board icon**: "Work Items - Boards", "Sprint 42 - Boards"
 - **Wiki icon**: Any page with "_wiki/wikis" in the URL (e.g., wiki documentation pages)
@@ -92,6 +94,7 @@ To test the extension:
    - `document.title = "Feature: New Feature"`
    - `document.title = "Epic: Major Initiative"`
    - `document.title = "Release Readiness - Sprint 1"`
+   - `document.title = "Decision: Architecture Choice"`
    - `document.title = "Work Items - Search"`
    - `document.title = "Sprint Planning - Boards"`
    - `document.title = "MyProject - Repos"`
@@ -118,6 +121,7 @@ To test the extension:
 - `icons/feature.png` - Feature icon image
 - `icons/epic.png` - Epic icon image
 - `icons/readiness.png` - Release Readiness icon image
+- `gavel.png` - Decision icon image
 - `icons/mag.png` - Search icon image
 - `icons/board.png` - Board icon image
 - `icons/wiki.png` - Wiki icon image
@@ -167,6 +171,7 @@ The following icons are sourced from [Flaticon](https://www.flaticon.com) and ar
 - **Story Icon (Alt)**: [Book icons created by smashicons - Flaticon](https://www.flaticon.com/free-icons/book)
 - **Wiki Icon**: [Wiki icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/wiki)
 - **Pull Request Icon**: [Git commit icons created by Cap Cool - Flaticon](https://www.flaticon.com/free-icons/commit-git)
+- **Gavel Icon**: [Gavel icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/gavel)
 
 ### Other Icons
 

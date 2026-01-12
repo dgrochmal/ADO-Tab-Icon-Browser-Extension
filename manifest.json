@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ADO Tab Icons",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Changes Azure DevOps tab icons based on page type: Bug, Pull Request, Pipeline, Feature, Epic, Readiness, User Story, and more",
   "icons": {
     "16": "icons/bug.png",
@@ -20,7 +20,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["icons/bug.png", "icons/pr.png", "icons/story.png", "icons/release.png", "icons/feature.png", "icons/epic.png", "icons/readiness.png", "icons/mag.png", "icons/board.png", "icons/wiki.png", "icons/code.png", "icons/independent-variable.png", "icons/ado.png", "icons/dashboard.png", "icons/vase.png", "icons/query.png", "icons/settings.png"],
+      "resources": ["icons/bug.png", "icons/pr.png", "icons/story.png", "icons/release.png", "icons/feature.png", "icons/epic.png", "icons/readiness.png", "icons/mag.png", "icons/board.png", "icons/wiki.png", "icons/code.png", "icons/independent-variable.png", "icons/ado.png", "icons/dashboard.png", "icons/vase.png", "icons/query.png", "icons/settings.png", "icons/gavel.png"],
       "matches": ["https://dev.azure.com/*", "https://*.visualstudio.com/*", "https://dev.azure.com.mcas.ms/*"]
     }
   ],
